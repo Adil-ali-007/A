@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./project1.css">
+</head>
+<body>
+    
+    <div class="box">
+ 
+        <div>
+            <form id="loginForm">
+        <h1>Login</h1>
+       </div>
+        
+        <div>
+        <label for="mobile"style="display: block;">Mobile no:</label>
+        <input type="text"id="mobile"placeholder="Enter your phone Number"style="display: inline;">
+         </div>
+
+        <div>
+        <label for="aadhaar"style="display: block;">Adhaar no:</label>
+        <input type="text" id="aadhaar"placeholder="Enter your Adhaar number"style="display: block;">
+         </div>
+
+         <div>
+        <label for="password"style="display: block;">Password:</label>
+        <input type="text" id="password"placeholder="Enter your password"style="display: block;">
+            </div>
+
+            <br>
+            <button type="submit" style="width: 100%;height: 40px;font-size: 20px;padding: 5px;background-color: rgb(4, 100, 74);font-weight: 600;">Login</button>
+            
+  
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("loginForm");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault(); // form ko submit hone se rokta hai
+
+        const mobile = document.getElementById("mobile").value.trim();
+        const aadhaar = document.getElementById("aadhaar").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        // Validation
+        if (mobile === "" || aadhaar === "" || password === "") {
+            alert("⚠ Please fill all fields!");
+            return;
+        }
+
+        if (!/^[6-9]\d{9}$/.test(mobile)) {
+            alert("⚠ Enter a valid 10-digit Mobile number.");
+            return;
+        }
+
+        if (!/^\d{12}$/.test(aadhaar)) {
+            alert("⚠ Enter a valid 12-digit Aadhaar number.");
+            return;
+        }
+
+        if (password.length < 6) {
+            alert("⚠ Password must be at least 6 characters.");
+            return;
+        }
+
+        // Success
+        alert("✅ Login Successful!");
+        // Agar chaho dusre page pe bhejna hai to
+        // window.location.href = "home.html";
+    });
+});
+    </script>
+    
+</body>
+</html>
+
+<!--makin sign up form-->
